@@ -14,5 +14,4 @@ titles=soup.find_all('h3','tile__description__heading')
 for title in titles:
     print(title.string)
 
-#print(page_info)
 
