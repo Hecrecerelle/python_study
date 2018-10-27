@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib import request
+import fileinput
 
 url="https://www.chelseafc.com/zh"
 
@@ -11,7 +12,12 @@ page_info=request.urlopen(page).read().decode('utf-8')
 soup=BeautifulSoup(page_info,'html.parser')
 titles=soup.find_all('h3','tile__description__heading')
 
-for title in titles:
-    print(title.string)
+try:
+    files=open(r'test.txt','w')
+    for title in titles:
+        files.write(title.string + '\n')
+finally:
+    if files:
+        files.close()
 
 
